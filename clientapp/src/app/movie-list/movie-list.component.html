@@ -1,0 +1,33 @@
+<div class="items" *ngIf="movies && movies.length > 0; else noData">
+  <div class="item" *ngFor="let movie of movies trackBy: movieById">
+    <a [routerLink]="['/movie', movie.id]"  
+       matTooltip="{{movie.overview}}">
+       <h3>{{movie.title}}  </h3>
+       <mat-icon>grade</mat-icon>{{movie.vote_average}}
+      <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w185/'+movie.poster_path" 
+        alt="poster movie">
+      <img 
+      *ngIf="!movie.poster_path" src="/assets/images/no_poster_available.jpg" alt="No poster available">
+     
+    </a>
+    
+
+    
+    <div *ngIf="authService.tokenInfoValue">
+      <button mat-button *ngIf="pagina == '1'"  color="primary" (click)="deleteMovie(movie.my_movie_id)">
+        Delete 
+       </button>
+ 
+       <button mat-button *ngIf="pagina == '0'"  color="primary" (click)="addMovie(movie.id)">
+         Add 
+       </button>
+    </div>
+    <p class="date">{{movie.release_date | date}}</p>
+  </div>
+</div>
+<ng-template #noData>
+  <h3>
+    {{'No results'}}
+    <mat-icon>sentiment_very_dissatisfied</mat-icon>
+  </h3>
+</ng-template>

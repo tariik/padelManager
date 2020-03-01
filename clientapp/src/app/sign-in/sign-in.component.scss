@@ -1,0 +1,68 @@
+@import '../../assets/scss/palette';
+
+.btn-social {
+  min-width: 300px;
+  border: none;
+  background: transparent;
+  outline: none;
+  display: flex;
+  justify-content: center;
+}
+.btn-twitter {
+  background-color: $white;
+}
+.btn-facebook {
+  background-color: $facebook;
+  color: $white;
+}
+.btn-google {
+  background-color: $twitter;
+  color: $white;
+}
+.btn-login {
+  background-color: $primary-light;
+}
+svg {
+  height: 24px;
+  width: 24px;
+  margin: 0 10px 0 -6px;
+}
+
+.search {
+        background: $primary-light;
+        min-height: 3rem;
+        line-height: 3;
+        padding: 16px 0 0 20px;
+
+ }
+
+        .mat-form-field {
+            max-width: 400px;
+            padding: 0 20px;
+            font-size: 13px;
+        }
+        .mat-form-field-outline {
+            color: $primary-light;
+            background: $primary-light;
+        }
+        .mat-form-field-label {
+            color: $primary-light;
+            background: $primary-light;
+        }
+        .mat-icon {
+            color: $primary-light;
+            height: 1.75rem;
+        }
+   
+.example-card {
+  max-width: 400px;
+  float: center;
+}
+
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

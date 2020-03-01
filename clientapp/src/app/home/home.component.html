@@ -1,0 +1,46 @@
+<div class="app-toolbar" [class.app-toolbar--mobile]="mobileQuery.matches" *ngIf="loggedin">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1>Movies DB</h1>
+    </mat-toolbar>
+  </div>
+  <mat-sidenav-container class="app-sidenav">
+    <mat-sidenav [opened]="mobileQuery.matches ? 'false': 'true'" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches">
+      <nav class="navigation" *ngIf="loggedin">
+        <div class="navigation--search">
+          <mat-form-field appearance="outline">
+            <mat-label >{{'THE MOVIE DB API'}}</mat-label>
+            <input  [hidden]="(1==1)" matInput #search (keyup.enter)="searchMovie(search.value); search.value=''" (keyup.enter)="closeSidenav()"
+              tabindex="-1">
+            <mat-icon [hidden]="(1==1)" matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <ul class="navigation--links">
+          <li>
+            <a [routerLink]="['my-movies']" routerLinkActive="active" (click)="closeSidenav(); resetPagination()">
+              <mat-icon>favorite</mat-icon> {{'My movies'}}</a>
+          </li>
+          <li>
+            <a [routerLink]="['top-movies']" routerLinkActive="active" (click)="closeSidenav(); resetPagination()">
+              <mat-icon>whatshot</mat-icon> {{'Trending TOP 100'}}</a>
+          </li>
+         
+          <li>
+            <a (click)="closeSidenav()" (click)="onSignOut()">
+              <mat-icon>cancel</mat-icon> {{'Sign out'}}</a>
+          </li>
+        </ul>
+  
+      </nav>
+    </mat-sidenav>
+    <div id="hub-movies">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+  <div id="btn-returnToTop">
+    <button mat-mini-fab color="primary" (click)="scrollTop()">
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+  </div>

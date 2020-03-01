@@ -1,0 +1,39 @@
+<div>
+    <h1>My movies</h1>
+    <button mat-button color="primary" (click)="top()">
+      TOP 
+    </button>
+  <div class="loading-shade" *ngIf="loading">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+  </div>
+  <ng-template [ngIf]="movies">
+    <app-movie-list
+      [movies]="movies"
+      [pagina]="1"
+    >
+    </app-movie-list>
+  </ng-template>
+  <ng-template [ngIf]="movies">
+    <nav *ngIf="totalPages > 1 ">
+        <ul class="pagination mt-2">
+            <li class="page-item">
+                <button mat-button color="primary" class="page-link" tabindex="-1" (click)="getMovies(1)" [disabled]="currentPage == 1">  Primera</button>
+            </li>
+            <li class="page-item">
+                <button mat-button color="primary" class="page-link" tabindex="-1" *ngIf="currentPage-1 > 0 " (click)="getMovies(currentPage-1)"><</button>
+            </li>
+            <li class="page-item"><button mat-button color="primary" class="page-link" *ngIf="currentPage-1 > 0 " (click)="getMovies(currentPage-1)">{{currentPage-1}}</button></li>
+            <li class="page-item active">
+                <button mat-button  class="page-link"> <span class="sr-only">{{currentPage}}</span></button>
+            </li>
+            <li class="page-item"><button mat-button color="primary" class="page-link" *ngIf="currentPage < totalPages " (click)="getMovies(currentPage+1)">{{currentPage+1}}</button></li>
+            <li class="page-item">
+                <button mat-button color="primary" class="page-link" *ngIf="currentPage+1 < totalPages " (click)="getMovies(currentPage+1)">></button>
+            </li>
+            <li class="page-item">
+                <button mat-button color="primary" class="page-link" (click)="getMovies(totalPages)" [disabled]="currentPage === totalPages">Ultima</button>
+            </li>
+        </ul>
+    </nav>
+  </ng-template>
+</div>
