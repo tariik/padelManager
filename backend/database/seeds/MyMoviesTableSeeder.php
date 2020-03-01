@@ -30,7 +30,7 @@ class MyMoviesTableSeeder extends Seeder
             
             if (is_object($movie)) {
                 
-                $movie = \App\MyMovie::create(
+               /* $movie = \App\MyMovie::create(
                     [
                     'id'=>$movie->id,
                     'title'=>$movie->title,
@@ -42,10 +42,10 @@ class MyMoviesTableSeeder extends Seeder
                     'vote_average'=>$movie->vote_average,
                     'vote_count'=>$movie->vote_count,
                     ]
-                );
+                );*/
 
                 $myMovie = MyMovie::find($i);
-                $user->MyMovies()->attach($myMovie);
+                //$user->MyMovies()->attach($myMovie);
             }
         }
         }
