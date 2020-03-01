@@ -37,10 +37,10 @@ class MyMovieController extends BaseController
         }
 
          // movies found then it will return all post without touching the database
-       if ($data = Redis::get('movies.my'.$page.$usrId)) {
+       /*if ($data = Redis::get('movies.my'.$page.$usrId)) {
             
             return $this->sendResponse(json_decode($data), ' redis movies retrieved successfully.');
-        }
+        }*/
 
 
         $movies = MyMovie::getMovies($page, $usrId);
@@ -166,10 +166,10 @@ class MyMovieController extends BaseController
         $usrId = $request->user()->id; 
 
          // movies found then it will return all post without touching the database
-        if ($data = Redis::get('movies.topBTN'.$page)) {
+        /*if ($data = Redis::get('movies.topBTN'.$page)) {
             
             return $this->sendResponse(json_decode($data), ' redis movies retrieved successfully.');
-        }
+        }*/
 
       
         $movies = MyMovie::getTop($page, $usrId);

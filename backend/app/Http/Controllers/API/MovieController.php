@@ -30,11 +30,11 @@ class MovieController extends BaseController
         }
 
          // movie found then it will return  without touching the database
-        if ($movies = Redis::get('movies.top'.$page)) {
+        /*if ($movies = Redis::get('movies.top'.$page)) {
             
             return $this->sendResponse(json_decode($movies), 'redis movies retrieved successfully.');
 
-         }
+         }*/
 
         $movies = $this->movie->topRated($page);
 
