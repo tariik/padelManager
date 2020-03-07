@@ -8,7 +8,6 @@ $ php artisan passport:install
 $ php artisan db:seed
 $ php artisan serve 
 ```
- el app incluye excepcionalmente por la prueba el fichero `${.env}`
 
 # Frontend
     
